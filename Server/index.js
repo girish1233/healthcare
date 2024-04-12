@@ -7,7 +7,12 @@ const PORT = process.env.PORT || 4000
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
-app.use(cors())
+app.use(cors(
+    {
+        origin: ["https://deploy-mern-lwhq.vercel.app"],
+        methods : ["POST","GET"]
+        credentials: true 
+    }));
 
 const todoroutes = require("./routes/medicines")
 app.use("/api/v1", todoroutes)
